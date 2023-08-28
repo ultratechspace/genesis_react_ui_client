@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: theme.zIndex.modal + 1,
       color: "#fff",
     },
-  })
+  }),
 );
 
 export function LoginPage() {
@@ -67,7 +67,7 @@ export function LoginPage() {
           if (menus.length) {
             localStorage.setItem(
               "defaultRoute",
-              menus[0].routeName + menus[0].childMenus[0].routeName
+              menus[0].routeName + menus[0].childMenus[0].routeName,
             );
 
             const allowedRoutes: any = [];

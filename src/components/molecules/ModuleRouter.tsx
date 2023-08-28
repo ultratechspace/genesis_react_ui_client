@@ -14,7 +14,7 @@ export function ModuleRouter({ subRoutes, path }: Props): React.ReactElement {
       ? match.path === "/unauthorized"
         ? "/unauthorized"
         : JSON.parse(localStorage.getItem("UserMenus") || "")?.find(
-            (menuItem: any) => menuItem.routeName === match.path
+            (menuItem: any) => menuItem.routeName === match.path,
           )?.childMenus[0]?.routeName
       : match.path === "/auth"
       ? "/login"

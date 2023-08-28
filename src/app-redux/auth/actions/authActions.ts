@@ -16,7 +16,7 @@ export const loginFailed = (
     string,
     IActionMeta<ILoginArgs>,
     { code?: string; message?: string; name?: string }
-  >
+  >,
 ) => {
   delete state.user;
   state.authError = action?.error?.message || "An Unexpected Error Occurred";

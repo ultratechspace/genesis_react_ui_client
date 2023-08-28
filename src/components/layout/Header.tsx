@@ -21,12 +21,12 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       marginTop: "10px",
     },
-  })
+  }),
 );
 
 export function Header() {
   const history = useHistory();
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const menuId = "primary-search-account-menu";

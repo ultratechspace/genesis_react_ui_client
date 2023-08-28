@@ -38,7 +38,7 @@ ax.interceptors.response.use(
           addNotificationAction({
             message: res.successMessage,
             options: { variant: "success" },
-          })
+          }),
         );
     } else if (res.isSuccess === false && res.status === 1) {
       // API Errors
@@ -48,7 +48,7 @@ ax.interceptors.response.use(
               addNotificationAction({
                 message: x,
                 options: { variant: "error" },
-              })
+              }),
             );
           })
         : "";
@@ -60,7 +60,7 @@ ax.interceptors.response.use(
               addNotificationAction({
                 message: x.errorMessage,
                 options: { variant: "error" },
-              })
+              }),
             );
           })
         : "";
@@ -74,7 +74,7 @@ ax.interceptors.response.use(
         addNotificationAction({
           message: "You are unauthorized for this action",
           options: { variant: "error" },
-        })
+        }),
       );
     }
     if (error.response.status === 403 && !originalRequest._retry) {
@@ -118,5 +118,5 @@ ax.interceptors.response.use(
       });
     }
     return Promise.reject(error);
-  }
+  },
 );
