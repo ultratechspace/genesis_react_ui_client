@@ -2,7 +2,6 @@ import { ThemeOptions } from "@material-ui/core/styles";
 
 export const customTheme: ThemeOptions = {
   palette: {
-    // type: "dark",
     primary: {
       main: "#0B3C5D",
     },
@@ -20,8 +19,5 @@ export const customTheme: ThemeOptions = {
     fontWeightBold: 800,
     button: { textTransform: "none" },
   },
-  overrides: {
-    // MuiButton: { containedSecondary: { color: "white" } },
-    // MuiDataGrid: { columnHeaderWrapper: { backgroundColor: "#0B3C5D" } },
-  },
+  overrides: {},
 };
