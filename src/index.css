@@ -1,0 +1,733 @@
+/* ScrollBar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: white;
+  border: 1px solid #efefef;
+}
+::-webkit-scrollbar-thumb {
+  background: #b8b5b5;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9b9999;
+}
+
+body {
+  /* font-family: "Inter", sans-serif !important; */
+  margin: 0;
+  /* min-height: "100vh"; */
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+/* 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+
+/* LOGIN PAGE START */
+.login-page,
+.register-page,
+.forgot-password-page {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.login-page .form-wrapper,
+.register-page .form-wrapper {
+  padding-bottom: 50px;
+  max-width: 320px;
+  margin: auto;
+}
+
+.forgot-password-page .form-wrapper {
+  padding-bottom: 100px;
+  max-width: 320px;
+  margin: auto;
+}
+
+.login-page .left-section,
+.login-page .right-section,
+.register-page .left-section,
+.register-page .right-section,
+.forgot-password-page .left-section,
+.forgot-password-page .right-section {
+  width: 50%;
+}
+
+.left-section {
+  display: flex;
+}
+
+.left-section .inner {
+  width: 80%;
+  margin: auto;
+}
+
+.login-page .right-section,
+.forgot-password-page .right-section,
+.register-page .right-section {
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
+}
+
+.header-logo {
+  height: 100px;
+  max-width: 320px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.forgot-password-page .form-heading {
+  margin: 0;
+}
+
+.headerLogo {
+  /* width: 230px; */
+  margin-left: -60px;
+}
+
+.form-heading1 {
+  margin-top: -20px;
+}
+
+.form-heading {
+  margin-bottom: 25px;
+  margin-top: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 27px;
+  color: #292929;
+}
+
+.btns-otp-screen {
+  width: 48%;
+}
+
+.login-button {
+  background-color: #2a3d75 !important;
+}
+
+.cancel-button {
+  margin-right: 10px !important;
+}
+
+.resend-text {
+  text-align: center;
+  cursor: pointer;
+  color: #e67817;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.resend-text-disabled {
+  text-align: center;
+  color: #e6781785;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.login-bg-img {
+  height: 100%;
+}
+
+.login-bg-pattern {
+  flex: 1 1 auto;
+  display: flex;
+  /* background: url("assets/images/login-bg-pattern.png"); */
+  background-position: right;
+  background-repeat: no-repeat;
+  /* background-size: contain; */
+}
+
+/* LOGIN PAGE END */
+.logo-main {
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.left-menu {
+  padding-top: 50px !important;
+}
+
+.left-menu a,
+.left-menu svg {
+  color: #7aabcc;
+}
+
+/* .left-menu a.Mui-selected,
+.left-menu a.Mui-selected svg {
+  color: #ffffff;
+} */
+
+/* Add new user styles START */
+.auf-head-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.auf-head-section h1 {
+  font-weight: 600;
+}
+
+.auf-head-section h1::after {
+  position: absolute;
+  content: "";
+  width: 31px;
+  height: 4px;
+  background-color: #64b5f6;
+  border-radius: 8px;
+  bottom: -8px;
+  left: 0;
+}
+
+.auf-content-section {
+  margin-top: 30px;
+}
+
+.MuiTabs-flexContainer {
+  height: 32px;
+}
+
+.form-row {
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgb(0 0 0 / 6%);
+}
+
+/* Add new user styles END */
+/* OVERRIDES */
+.MuiFormControlLabel-label {
+  font-size: 12px !important;
+}
+
+.MuiSwitch-colorPrimary.Mui-checked {
+  color: #1976d2 !important;
+}
+
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+  background-color: #1976d2 !important;
+}
+
+/* OVERRIDES END */
+
+.hidden {
+  overflow: hidden;
+}
+
+/* Calender Control Style */
+table.calendar {
+  border-collapse: collapse;
+  border: 1px solid #f5f5f5;
+}
+
+table.calendar thead {
+  background-color: #d0d0d0;
+  color: white;
+  margin-bottom: 3px;
+}
+
+table.calendar thead th {
+  font-weight: normal;
+  padding: 10px 3px;
+  color: black;
+}
+
+table.calendar thead th.bolder {
+  font-weight: bold;
+}
+
+table.calendar tbody {
+  font-size: 0.8em;
+}
+
+table.calendar td {
+  padding: 0.375rem 0.15rem;
+  cursor: pointer;
+  border: 1px solid rgba(185, 185, 185, 0.13);
+  min-width: 1.79rem;
+  height: 1.79rem;
+}
+
+table.calendar tr:last-child td {
+  border-bottom: none;
+}
+
+table.calendar td.month-name {
+  font-weight: bold;
+  text-align: left;
+  cursor: default;
+  border-left: none;
+}
+
+table.calendar td.prev-month,
+table.calendar td.next-month {
+  color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+table.calendar td.week-separator {
+  pointer-events: none;
+  padding: 100px;
+  width: 8px;
+  background: red;
+}
+
+table.calendar td.winter {
+  background-color: rgba(159, 220, 249, 0.32);
+}
+
+table.calendar td.spring {
+  background-color: rgba(145, 212, 110, 0.32);
+}
+
+table.calendar td.summer {
+  background-color: rgba(255, 232, 91, 0.32);
+}
+
+table.calendar td.autumn {
+  background-color: rgba(246, 151, 60, 0.32);
+}
+
+table.calendar td.holidays {
+  font-weight: bold;
+  color: red;
+  text-decoration: underline;
+}
+
+table.calendar td.weekend {
+  font-style: italic;
+  font-weight: bold;
+}
+
+table.calendar td.bolder {
+  font-weight: bold;
+  background: #ffe7e7;
+  color: #ff7575;
+}
+
+table.calendar .day-headers th.bolder {
+  color: red;
+}
+
+table.calendar td.winter.range,
+table.calendar td.winter.selected {
+  background-color: rgba(159, 220, 249, 1);
+  font-weight: bold;
+}
+
+table.calendar td.spring.range,
+table.calendar td.spring.selected {
+  background-color: rgba(145, 212, 110, 1);
+  font-weight: bold;
+}
+
+table.calendar td.summer.range,
+table.calendar td.summer.selected {
+  background-color: rgba(255, 232, 91, 1);
+  font-weight: bold;
+}
+
+table.calendar td.autumn.range,
+table.calendar td.autumn.selected {
+  background-color: rgba(246, 151, 60, 1);
+}
+
+div.calendar-controls {
+  display: table;
+  font-size: 25px;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+div.calendar-controls div {
+  display: inline;
+}
+
+div.calendar-controls .current-year {
+  margin: 0 4px;
+  font-size: 0.9rem;
+}
+
+div.calendar-controls .control {
+  font-weight: bolder;
+  color: #323232;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+div.calendar-controls .today {
+  position: absolute;
+  right: 15px;
+  line-height: 35px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+}
+
+/* Demo */
+
+div#calendar {
+  position: relative;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  background-color: white;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+table.calendar td:visited {
+  background-color: #f5f5f5;
+}
+
+table.calendar td.selected {
+  background-color: #0b3c5d;
+  color: #fff;
+  font-weight: 700;
+}
+
+table.calendar td.next-month,
+table.calendar td.prev-month {
+  color: transparent;
+  cursor: default;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.08) !important;
+  /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAABZJREFUCB1jYEADmzdv/o8iRA0BoIEAKngPeSAlnXcAAAAASUVORK5CYII=); */
+}
+
+table.calendar td.activeDate {
+  background-color: #72ca00;
+  color: #fff;
+  font-weight: 700;
+}
+
+.calendar-controls .control:first-child {
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='192 -192 222 349' style='enable-background:new 192 -192 222 349;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23424242;%7D%0A%3C/style%3E%3Cpolygon class='st0' points='399,110.1 366.7,142.5 207,-17.5 207,-17.5 207,-17.5 366.7,-177.5 399,-145.1 271.7,-17.5 '/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+  float: left;
+  margin-top: 6px;
+}
+
+.calendar-controls .control:first-child {
+  text-indent: -9999px;
+}
+
+.calendar-controls .control:last-child {
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='192 -192 222 349' style='enable-background:new 192 -192 222 349;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23424242;%7D%0A%3C/style%3E%3Cpolygon class='st0' points='207,-145.1 239.3,-177.5 399,-17.5 399,-17.5 399,-17.5 239.3,142.5 207,110.1 334.3,-17.5 '/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+  float: right;
+  margin-top: 6px;
+}
+
+.calendar-controls .control:last-child {
+  text-indent: -9999px;
+}
+
+/* Nav Updated Design */
+.drawerContent .TopItem,
+.TopItem .MuiListItemIcon-root {
+  color: #615e5d !important;
+}
+
+.drawerContent .slectedTopItem,
+.slectedTopItem .MuiListItemIcon-root {
+  background-color: #cbcbcb !important;
+  color: #1e1917 !important;
+}
+
+/* SubItem */
+.slectedSubItem {
+  padding: 0px !important;
+}
+
+.drawerContent .slectedSubItem .MuiListItemText-root {
+  background-color: #d8d8d8 !important;
+  padding: 5px;
+  padding-left: 16px;
+  margin-top: 0;
+  /* border-radius: 5px; */
+}
+
+.drawerContent .slectedSubItem .MuiListItemText-root p {
+  /* font-weight: bold; */
+  color: #e67817 !important;
+}
+
+/* SubItem  notSelectd */
+.notSelectedSubItem {
+  padding: 0px !important;
+}
+
+.drawerContent .notSelectedSubItem .MuiListItemText-root {
+  /* background-color: #E67817 !important; */
+  padding: 10px;
+  padding-left: 16px;
+  /* border-radius: 5px; */
+}
+
+.notSelectedSubItem p {
+  /* font-weight: bold; */
+  color: #615e5d;
+}
+
+.toolBar {
+  /* background-color: #F5F5F5; */
+  background: #f5f5f5 0% 0% no-repeat padding-box;
+  box-shadow: 0px 2px 12px #0b3c5d1f;
+  opacity: 1;
+}
+
+.toolBar .MuiIconButton-root {
+  color: black;
+}
+
+.MuiGrid-grid-md-6 .MuiFormHelperText-filled {
+  color: red;
+}
+
+/* new Grid Design */
+.commonXGrid .MuiDataGrid-columnHeaders {
+  background-color: #282c33;
+  color: white;
+  border-radius: 0px;
+  /* min-height: 48px !important; */
+}
+
+.commonXGrid .MuiButton-textPrimary {
+  color: #2c2c2c !important;
+  font-weight: bold !important;
+}
+
+.commonXGrid .MuiDataGrid-row {
+  max-height: 45px !important;
+  /* min-height: 45px !important; */
+}
+
+.commonXGrid .MuiDataGrid-virtualScrollerRenderZone {
+  margin-top: 20px;
+}
+
+.commonXGrid .MuiDataGrid-menuIconButton {
+  color: white;
+}
+
+.commonXGrid .MuiDataGrid-sortIcon {
+  /* color: white; */
+}
+
+.customMuiLink {
+  color: #008ceb !important;
+  cursor: pointer !important;
+}
+
+.label-green {
+  color: #72ca00 !important;
+}
+
+.MuiTabs-flexContainerVertical .Mui-selected {
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 1px 1px #0b3c5d1f;
+  background: transparent linear-gradient(180deg, #e7e7e7 0%, #00000000 100%) 0% 0% no-repeat
+    padding-box;
+}
+
+/* PrivateTabIndicator-root-44 PrivateTabIndicator-colorSecondary-46 MuiTabs-indicator makeStyles-indicator-43 PrivateTabIndicator-vertical-47 */
+.MuiTabs-scroller .MuiTabs-indicator {
+  background-color: white !important;
+  border-radius: 5px !important;
+}
+
+.gateIn .MuiTabs-flexContainerVertical {
+  padding: 15px;
+}
+
+.gateIn .MuiTab-root {
+  min-height: 32px !important;
+  margin-bottom: 10px !important;
+}
+
+.gateInTabs {
+  padding-top: 15px;
+}
+
+.configTabs .MuiTabs-flexContainerVertical {
+  padding: 15px;
+}
+
+.configTabs .MuiTab-root {
+  min-height: 32px !important;
+  margin-bottom: 10px !important;
+}
+
+.configSubTabs {
+  padding-top: 15px;
+}
+
+.customSubmitBtn {
+  padding: 9px !important;
+  margin-top: -8px !important;
+}
+
+/* Header */
+.headerTopUserInfo {
+  height: 40px !important;
+  box-shadow: 0px 1px 1px #5368862b !important;
+  border: 1px solid #eaeaea !important;
+  border-radius: 8px !important;
+}
+
+.headerTopUserInfo .userName {
+  margin-left: 5px !important;
+}
+
+.headerTopUserInfo .downArrow {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+#menu-appbar {
+  top: 50px !important;
+  height: 195px;
+}
+
+.MuiPaper-elevation8 {
+  right: 10px !important;
+  min-width: 190px !important;
+  /* for logout */
+  /* Commented out to resolve filter styling issue in all grids */
+  /* max-width: 320px !important; */
+  /* for color picker in inventory configuration */
+}
+
+.inspectionScannerGrid .MuiDataGrid-columnSeparator--sideRight {
+  display: none !important;
+}
+
+.inspectionScannerGrid .MuiDataGrid-withBorder {
+  border-right: none !important;
+}
+
+/* MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd */
+.selectRolesInput .MuiOutlinedInput-adornedEnd {
+  /* height: 40px !important; */
+}
+
+.newInput .MuiOutlinedInput {
+  /* padding-top: 20px; */
+}
+
+.icon-button-search {
+  margin-right: -30px !important;
+}
+
+/* COLOR PICKER STYLES */
+.colorPickerTextField .MuiInputBase-formControl {
+  padding-left: 20px;
+}
+
+/* color code styles - configurations -> inventory */
+.autoCompleteField-colorCode
+  .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon
+  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+  padding-left: 30px;
+}
+
+/* .MuiPaper-elevation8 {
+  width: 320px;
+} */
+
+.customTextField .MuiInputLabel-outlined {
+  /* font-weight: bold; */
+  color: black;
+}
+
+.customTextField .MuiFormLabel-asterisk {
+  font-weight: bold;
+  color: red;
+}
+
+.customTextField .MuiOutlinedInput-input {
+  font-size: 13px;
+}
+
+.customTextFieldUnselected .MuiInputLabel-outlined {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.customTextFieldUnselected .MuiFormLabel-asterisk {
+  font-weight: bold;
+  color: red;
+}
+
+.customTextFieldUnselected .MuiOutlinedInput-input {
+  font-size: 13px;
+}
+
+/* BT dropdown in dashboard */
+#menu-terminalId
+  .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+  top: 212px !important;
+  max-height: 280px !important;
+}
+
+@media (min-width: 1280px) {
+  .headerButtonsConfig {
+    margin-left: 13px !important;
+  }
+
+  .headerButtonsConfig span {
+    margin-right: 6px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .terminalChargesSearchBtns {
+    text-align: inherit !important;
+  }
+
+  .commercialChargeTotalDiv {
+    width: 77% !important;
+  }
+}
+
+@media (min-width: 1366px) {
+}
+
+.flatpickr-calendar
+  .flatpickr-innerContainer
+  .flatpickr-rContainer
+  .flatpickr-days
+  .dayContainer
+  .selected {
+  background-color: #72ca00 !important;
+  border: #72ca00;
+}
