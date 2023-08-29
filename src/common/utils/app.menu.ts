@@ -6,4 +6,11 @@ export const menus: any = [
     guard: true,
     childMenus: [{ title: "Dashboard", routeName: "", noDrawer: false }],
   },
+  {
+    title: "Enrollment",
+    icon: "HomeIcon",
+    routeName: "/enrollment",
+    guard: true,
+    childMenus: [{ title: "Enrollment", routeName: "", noDrawer: false }],
+  },
 ];

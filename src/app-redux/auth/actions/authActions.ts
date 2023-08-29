@@ -19,6 +19,7 @@ export const loginFailed = (
   >,
 ) => {
   delete state.user;
+  state.status = "idle";
   state.authError = action?.error?.message || "An Unexpected Error Occurred";
 };
 export const handleLogin = (state: AuthState) => {
@@ -28,13 +29,14 @@ export const handleLogin = (state: AuthState) => {
 
 export const loginAction = createAsyncThunk("auth/loginAction", async (user: ILoginArgs) => {
   try {
-    const res = await ax.post<IApi>("/login", user);
-    if (res.data.value) {
+    const res: any = await ax.post<IApi>("/auth/login", user);
+    if (res.data) {
       localStorage.clear();
-      localStorage.setItem("token", res.data.value.token);
-      localStorage.setItem("UserFullName", res.data.value.userFullName);
-      localStorage.setItem("UserId", res.data.value.userId);
-      return res.data.value;
+      localStorage.setItem("token", res.data.access_token);
+      localStorage.setItem("UserFullName", `${res.data.firstname} ${res.data.lastname}`);
+      localStorage.setItem("UserId", res.data.id);
+      localStorage.setItem("user", JSON.stringify(res?.data));
+      return res.data;
     } else {
       localStorage.clear();
     }

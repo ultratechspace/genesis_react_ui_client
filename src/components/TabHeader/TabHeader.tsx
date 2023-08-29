@@ -5,11 +5,11 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 const useStyles = makeStyles((theme: Theme) => ({
   breadcrumbs: {
-    fontSize: theme.typography.pxToRem(12),
+    fontSize: theme.typography.pxToRem(16),
   },
   selectedBreadCrumb: {
-    color: "#00A3FF",
-    fontSize: theme.typography.pxToRem(12),
+    color: "#284492",
+    fontSize: theme.typography.pxToRem(16),
     textDecoration: "underline",
   },
 }));

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
     deleteButton: { backgroundColor: "red", marginTop: "7px", color: "white" },
     editButton: { backgroundColor: "#1976d2", marginTop: "7px", color: "white" },
     greenButton: { backgroundColor: "#72CA00", marginTop: "7px", color: "white" },
-  })
+  }),
 );
 
 export default function NewCommonButton({
