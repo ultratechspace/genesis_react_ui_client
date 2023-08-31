@@ -84,3 +84,21 @@ code {
   /* for color picker in inventory configuration */
 }
 
+/* react table */
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  width: 300px;
+}
+
+.customTextField .MuiInputLabel-outlined {
+  font-weight: bold;
+  color: black;
+}
+
+.customTextField .MuiFormLabel-asterisk {
+  font-weight: bold;
+  color: red;
+}
+
+.customTextField .MuiOutlinedInput-input {
+  font-size: 13px;
+}

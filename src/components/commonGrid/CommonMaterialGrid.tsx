@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import { MaterialReactTable } from "material-react-table";
+import React, { useEffect, useMemo, useState } from "react";
+import { MRT_PaginationState, MaterialReactTable } from "material-react-table";
 import { Box } from "@material-ui/core";
 import { useStyles } from "./styles";
 
@@ -11,6 +11,10 @@ interface Props {
   defaultPerPageRecord?: number;
   deletedRow?: boolean;
   hideFooter?: boolean;
+  enableRowSelection?: boolean;
+  rowSelectionHandler?: any;
+  rowCount?: any;
+  paginationHandler?: any;
 }
 
 const CommonMaterialGrid = ({
@@ -21,6 +25,10 @@ const CommonMaterialGrid = ({
   loader = false,
   deletedRow = false,
   hideFooter = true,
+  enableRowSelection = false,
+  rowSelectionHandler,
+  rowCount,
+  paginationHandler,
 }: Props) => {
   const classes = useStyles();
   const emptyMessage = useMemo(() => {
@@ -32,6 +40,20 @@ const CommonMaterialGrid = ({
       sx: deletedRow && row.row.original.isDeleted ? { color: "red" } : {},
     };
   };
+
+  const [rowSelection, setRowSelection] = useState({});
+  const [pagination, setPagination] = useState<MRT_PaginationState>({
+    pageIndex: 0,
+    pageSize: 10,
+  });
+
+  useEffect(() => {
+    rowSelectionHandler(rowSelection);
+  }, [rowSelection]);
+
+  useEffect(() => {
+    paginationHandler(pagination);
+  }, [pagination]);
 
   return (
     <div className={classes.root}>
@@ -45,25 +67,30 @@ const CommonMaterialGrid = ({
           enablePinning
           enableRowActions={false}
           enableColumnResizing
-          enableRowSelection={false}
-          initialState={{ density: "compact" }}
+          initialState={{ density: "compact" }} // comfortable
           enableStickyHeader
           enableFullScreenToggle={false}
           enablePagination={hideFooter}
           // initialState={{ showColumnFilters: true }}
-          state={{ isLoading: loader }}
+          manualPagination
+          onPaginationChange={setPagination}
+          rowCount={rowCount}
+          enableRowSelection={enableRowSelection}
+          state={{ isLoading: loader, rowSelection, pagination }}
+          getRowId={(row: any) => row.id}
+          onRowSelectionChange={setRowSelection}
           muiTableContainerProps={{
             sx: { height: height },
           }}
           renderEmptyRowsFallback={() => emptyMessage}
           muiTableBodyCellProps={muiTableBodyCellProps}
-          muiTableHeadCellProps={{
-            sx: (theme) => ({
-              background: "black",
-              // borderRight: "white",
-              color: "white",
-            }),
-          }}
+          // muiTableHeadCellProps={{
+          //   sx: (theme) => ({
+          //     background: "black",
+          //     // borderRight: "white",
+          //     color: "white",
+          //   }),
+          // }}
         />
       </Box>
     </div>

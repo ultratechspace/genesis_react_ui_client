@@ -123,6 +123,7 @@ export function LoginPage() {
 
             <form onSubmit={formik.handleSubmit}>
               <TextField
+                className={"customTextField"}
                 size="small"
                 fullWidth
                 variant="outlined"
@@ -138,6 +139,7 @@ export function LoginPage() {
               />
               <Box m={4} />
               <TextField
+                className={"customTextField"}
                 size="small"
                 fullWidth
                 variant="outlined"

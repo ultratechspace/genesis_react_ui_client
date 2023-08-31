@@ -26,4 +26,23 @@ export const useStyles = makeStyles((theme: Theme) => ({
     // fontWeight: theme.typography.fontWeightRegular,
     color: "#000",
   },
+  multiselectConfigFileCompression: {
+    position: "relative",
+    paddingLeft: "4px",
+    "& .searchWrapper": {
+      border: "none",
+      maxHeight: "35px",
+      overflow: "auto",
+    },
+    "& ::placeholder": {
+      color: "#bcbcbc",
+    },
+  },
+
+  groupTitle: {
+    fontSize: "16px",
+    fontStyle: "normal",
+    fontWeight: 800,
+    color: "#404040",
+  },
 }));

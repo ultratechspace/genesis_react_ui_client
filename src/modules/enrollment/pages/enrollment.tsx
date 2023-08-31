@@ -1,33 +1,164 @@
-import React, { useState } from "react";
-import { Box, Card, Typography, CardContent, Grid, Divider } from "@material-ui/core";
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable prettier/prettier */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useEffect, useMemo, useState } from "react";
+
+import { columns } from "./components/columns";
+import { useDispatch } from "react-redux";
+
+import { useFormik } from "formik";
 import { EnrollmentRoute } from "../enrollment.routes";
-import TabHeader from "../../../components/tabHeader/TabHeader";
-import { useStyles } from "./components/style";
+import { GridRowModel } from "@mui/x-data-grid";
+import CommonDataGridPage from "../../../components/commonDataGridPage/CommonDataGridPage";
+import CommonMaterialGrid from "../../../components/commonGrid/CommonMaterialGrid";
+import { getCourses, getEnrollment } from "../../../app-redux/enrollment/actions/enrollmentAction";
+import { useAppSelector } from "../../../app-redux/hooks";
+import { enrollmentList, enrollmentLoader } from "../../../app-redux/enrollment/enrollmentSlice";
+import { EnrollmentFilters } from "./components/filters";
+import { Grid } from "@mui/material";
+import { EnrollmentGroups } from "./components/groups";
 
-interface Props {}
+const rows: any = [
+  {
+    id: "153",
+    courses: "(PC) Backing Up When Leaving 1 - Backing Up Lesson	",
+    status: "backlog",
+    assigned: "2023-08-15T00:32:03.993Z	",
+    enrolled: "true",
+    completed: "N/A	",
+    driver: "MAURCEL GOODMAN	",
+    group: "group 2, group 2, group 2",
+  },
+  {
+    id: "213",
+    courses: "(PC) Backing Up When Leaving 1 - Backing Up Lesson	",
+    status: "backlog",
+    assigned: "2023-08-15T00:32:03.993Z	",
+    enrolled: "true",
+    completed: "N/A	",
+    driver: "MAURCEL GOODMAN	",
+    group: "group 2, group 1 ",
+  },
+  {
+    id: "33",
+    courses: "(PC) Backing Up When Leaving 1 - Backing Up Lesson	",
+    status: "backlog",
+    assigned: "2023-08-15T00:32:03.993Z	",
+    enrolled: "true",
+    completed: "N/A	",
+    driver: "MAURCEL GOODMAN	",
+    group: "group 3",
+  },
+];
 
-export function Enrollment({}: Props): React.ReactElement {
-  const classes = useStyles();
+export function Enrollment() {
+  const dispatch = useDispatch();
+  const loader: boolean = useAppSelector(enrollmentLoader);
+  const enrollmentRecord: any = useAppSelector(enrollmentList);
+
+  const moduleName = EnrollmentRoute.title;
+  const pageHeading = EnrollmentRoute.subRoutes ? EnrollmentRoute.subRoutes[0].title : "Page Title";
+  const pageSize = 10;
+  const [displayColumns, setDisplayColumns] = React.useState<any>(columns);
+  const [gridRecord, setGridRecord] = React.useState<GridRowModel[]>([]);
+  const [pagination, setPagination] = useState({
+    take: 10,
+    skip: 0,
+  });
+  const [status, setStatus] = useState("");
+
+  const [apiParams, setApiParams] = useState({
+    take: 10,
+    skip: 0,
+    status: "",
+    course: "",
+  });
+
+  const getGridList = useMemo(async () => {
+    const list: [] =
+      (await enrollmentRecord) &&
+      enrollmentRecord?.items?.map((record: any) => {
+        const group = record.driver.groups.map((group: any) => group.group.name).join(", ");
+        return {
+          courses: record.course.name,
+          status: record.status,
+          assigned: record.createdDate,
+          enrolled: record.createdDate,
+          completed: record.completedDate == null ? "N/A" : record.completedDate,
+          driver: record.driver.name,
+          group: group,
+        };
+      });
+
+    list && setGridRecord(list);
+    return list;
+  }, [enrollmentRecord]);
+
+  useEffect(() => {
+    dispatch(getCourses());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getEnrollment(apiParams));
+  }, [apiParams]);
+
+  const rowSelectionHandler = (row: any) => {
+    // console.log("row", row);
+  };
+
+  const paginationHandler = (pagination: any) => {
+    setApiParams({ ...apiParams, take: pagination.pageSize, skip: pagination.pageIndex });
+  };
+
+  const statusHandler = (status: any) => {
+    setApiParams({ ...apiParams, status: status });
+  };
+
+  const courceHandler = (course: any) => {
+    setApiParams({ ...apiParams, course: course });
+  };
+
+  const behaviourHandler = (status: any) => {
+    setStatus(status);
+    const params = {
+      take: pagination.take,
+      skip: pagination.skip,
+      status: status,
+    };
+  };
 
   return (
     <>
-      {/* <Backdrop className={classes.backdrop} open={loading}>
-        <CircularProgress color="inherit" />
-      </Backdrop> */}
-      <TabHeader module={EnrollmentRoute.title} heading={EnrollmentRoute.title} />
-      <Box m={2} />
-      <Card>
-        <CardContent className={classes.cardMain}>
-          <Grid container direction="row" justifyContent="space-between" alignItems="center">
-            <Grid item md={8}>
-              <Box mt={1} mb={2}>
-                <Typography className={classes.pageHeading}>{EnrollmentRoute.title}</Typography>
-              </Box>
+      <CommonDataGridPage
+        module={moduleName}
+        heading={pageHeading}
+        GridDataComp={
+          <Grid container direction="row" justifyContent="center" alignItems="flex-start">
+            <Grid item xs={2}>
+              <EnrollmentGroups />
+            </Grid>
+            <Grid item xs={10}>
+              <CommonMaterialGrid
+                rows={gridRecord}
+                columns={displayColumns}
+                defaultPerPageRecord={pageSize}
+                loader={loader}
+                height={450}
+                enableRowSelection={true}
+                rowSelectionHandler={rowSelectionHandler}
+                rowCount={enrollmentRecord?.total}
+                paginationHandler={paginationHandler}
+              />
             </Grid>
           </Grid>
-          <Divider />
-        </CardContent>
-      </Card>
+        }
+      >
+        <EnrollmentFilters
+          statusHandler={statusHandler}
+          courceHandler={courceHandler}
+          behaviourHandler={behaviourHandler}
+        />
+      </CommonDataGridPage>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { authSlice } from "./auth/authSlice";
 import { settingsSlice } from "./settings/settingsSlice";
+import { enrollmentSlice } from "./enrollment/enrollmentSlice";
 
 /**
  * @link https://redux-toolkit.js.org/tutorials/typescript Redux-Toolkit Typescript Docs
@@ -9,6 +10,7 @@ export const store = configureStore({
   reducer: {
     settings: settingsSlice.reducer,
     auth: authSlice.reducer,
+    enrollment: enrollmentSlice.reducer,
   },
 });
 
