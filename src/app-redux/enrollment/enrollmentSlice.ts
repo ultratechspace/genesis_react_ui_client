@@ -1,16 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { getCourses, getEnrollment } from "./actions/enrollmentAction";
+import { getCourses, getDriversById, getEnrollment, getGroups } from "./actions/enrollmentAction";
 
 interface EnrollmentState {
   loader: true | false;
+  groupLoader: true | false;
   enrollment: [];
   courses: [];
+  groups: [];
+  drivers: [];
 }
 const initialState: EnrollmentState = {
   loader: false,
+  groupLoader: false,
   enrollment: [],
   courses: [],
+  groups: [],
+  drivers: [],
 };
 
 export const enrollmentSlice = createSlice({
@@ -40,6 +46,28 @@ export const enrollmentSlice = createSlice({
       state.loader = false;
       state.courses = payload;
     });
+    // Get getGroups methods
+    builder.addCase(getGroups.pending, (state) => {
+      state.loader = true;
+    });
+    builder.addCase(getGroups.rejected, (state) => {
+      state.loader = false;
+    });
+    builder.addCase(getGroups.fulfilled, (state: any, { payload }) => {
+      state.loader = false;
+      state.groups = payload;
+    });
+    // Get getDriversById methods
+    builder.addCase(getDriversById.pending, (state) => {
+      state.groupLoader = true;
+    });
+    builder.addCase(getDriversById.rejected, (state) => {
+      state.groupLoader = false;
+    });
+    builder.addCase(getDriversById.fulfilled, (state: any, { payload }: any) => {
+      state.groupLoader = false;
+      state.drivers = payload?.items;
+    });
   },
 });
 
@@ -48,3 +76,6 @@ export const {} = enrollmentSlice.actions; // to Access Reducers methods
 export const enrollmentLoader = (state: RootState) => state.enrollment.loader;
 export const enrollmentList = (state: RootState) => state.enrollment.enrollment;
 export const coursesRec = (state: RootState) => state.enrollment.courses;
+export const groupList = (state: RootState) => state.enrollment.groups;
+export const driverList = (state: RootState) => state.enrollment.drivers;
+export const groupLoader = (state: RootState) => state.enrollment.groupLoader;

@@ -83,7 +83,7 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
       newbehaviour.splice(currentIndex, 1);
     }
     formik.setFieldValue("behaviour", newbehaviour);
-    behaviourHandler(newbehaviour);
+    behaviourHandler(newbehaviour.join(","));
   };
 
   const handleCoursesOptionToggle = (option: string) => () => {
@@ -95,7 +95,7 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
       newcourses.splice(currentIndex, 1);
     }
     formik.setFieldValue("courses", newcourses);
-    courceHandler(newcourses);
+    courceHandler(newcourses.join(","));
   };
 
   const handleStatusOptionToggle = (option: string) => () => {

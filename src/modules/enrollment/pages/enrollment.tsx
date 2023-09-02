@@ -11,7 +11,11 @@ import { EnrollmentRoute } from "../enrollment.routes";
 import { GridRowModel } from "@mui/x-data-grid";
 import CommonDataGridPage from "../../../components/commonDataGridPage/CommonDataGridPage";
 import CommonMaterialGrid from "../../../components/commonGrid/CommonMaterialGrid";
-import { getCourses, getEnrollment } from "../../../app-redux/enrollment/actions/enrollmentAction";
+import {
+  getCourses,
+  getEnrollment,
+  getGroups,
+} from "../../../app-redux/enrollment/actions/enrollmentAction";
 import { useAppSelector } from "../../../app-redux/hooks";
 import { enrollmentList, enrollmentLoader } from "../../../app-redux/enrollment/enrollmentSlice";
 import { EnrollmentFilters } from "./components/filters";
@@ -72,6 +76,7 @@ export function Enrollment() {
     skip: 0,
     status: "",
     course: "",
+    driver: "",
   });
 
   const getGridList = useMemo(async () => {
@@ -96,6 +101,7 @@ export function Enrollment() {
 
   useEffect(() => {
     dispatch(getCourses());
+    dispatch(getGroups());
   }, []);
 
   useEffect(() => {
@@ -118,13 +124,12 @@ export function Enrollment() {
     setApiParams({ ...apiParams, course: course });
   };
 
-  const behaviourHandler = (status: any) => {
-    setStatus(status);
-    const params = {
-      take: pagination.take,
-      skip: pagination.skip,
-      status: status,
-    };
+  const driverhandler = (driver: any) => {
+    setApiParams({ ...apiParams, driver: driver });
+  };
+
+  const behaviourHandler = (behaviour: any) => {
+    //
   };
 
   return (
@@ -135,7 +140,7 @@ export function Enrollment() {
         GridDataComp={
           <Grid container direction="row" justifyContent="center" alignItems="flex-start">
             <Grid item xs={2}>
-              <EnrollmentGroups />
+              <EnrollmentGroups driverhandler={driverhandler} />
             </Grid>
             <Grid item xs={10}>
               <CommonMaterialGrid
