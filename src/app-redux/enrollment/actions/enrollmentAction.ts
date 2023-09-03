@@ -7,7 +7,7 @@ export const getEnrollment = createAsyncThunk("enrollment/getEnrollment", async 
     const { skip, take, status = "", course = "", driver = "" } = payload;
 
     const res = await ax.get<IApi>(
-      `/enrollment?skip=${skip}&take=${take}&status=${status}&course=${course}&driver=${driver}`,
+      `/enrollment?skip=${skip}&take=${take}&status=${status}&course=${course}&drivers=${driver}`,
     );
     if (res.status == 200 && res.data) return res.data;
     else throw new Error(res.statusText);

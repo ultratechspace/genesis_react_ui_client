@@ -93,8 +93,6 @@ export function EnrollmentGroups({ driverhandler }: Props) {
     } else {
       newChecked.splice(currentIndex, 1);
     }
-    console.log(newChecked.join(","));
-
     setChecked(newChecked);
     driverhandler(newChecked.join(","));
   };
@@ -111,14 +109,19 @@ export function EnrollmentGroups({ driverhandler }: Props) {
     setisChecked(newChecked);
     const allCheck: any = [];
 
+    debugger;
     for (const item of list) {
-      const index = checked.indexOf(item?.id);
-      if (index !== -1) {
-        allCheck.splice(index, 1);
-        checked.splice(index, 1);
+      const subItemChecked = checked.indexOf(item?.id);
+      if (newChecked.indexOf(index) != -1) {
+        if (subItemChecked == -1) {
+          allCheck.push(item?.id);
+          checked.push(item?.id);
+        }
       } else {
-        allCheck.push(item?.id);
-        checked.push(item?.id);
+        if (subItemChecked != -1) {
+          allCheck.splice(subItemChecked, 1);
+          checked.splice(subItemChecked, 1);
+        }
       }
     }
     driverhandler(allCheck.join(","));
