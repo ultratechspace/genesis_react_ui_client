@@ -8,8 +8,13 @@ type Props = {};
 export function Notification({}: Props): React.ReactElement {
   const notify = useAppSelector(selectNotify);
   const { enqueueSnackbar } = useSnackbar();
+
   useEffect(() => {
-    if (notify) enqueueSnackbar(notify.message, notify.options);
+    if (notify)
+      enqueueSnackbar(notify.message, {
+        ...notify.options,
+        preventDuplicate: true,
+      });
   }, [notify]);
   return <></>;
 }

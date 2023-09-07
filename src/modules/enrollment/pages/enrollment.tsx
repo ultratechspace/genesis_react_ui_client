@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable prettier/prettier */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import React, { useEffect, useMemo, useState } from "react";
 
 import { columns } from "./components/columns";

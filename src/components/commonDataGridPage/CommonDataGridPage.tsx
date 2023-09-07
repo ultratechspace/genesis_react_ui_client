@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Card, CardContent } from "@material-ui/core";
 import { useStyles } from "./styles";
-import TabHeader from "../tabHeader/TabHeader";
+import TabHeader from "../TabHeader/TabHeader";
 import CardHeader from "../cardHeader/CardHeader";
 
 type Props = {

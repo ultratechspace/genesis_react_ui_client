@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Card, Typography, CardContent, Grid, Divider } from "@material-ui/core";
 import { DashboardRoute } from "../dashboard.routes";
-import TabHeader from "../../../components/tabHeader/TabHeader";
+import TabHeader from "../../../components/TabHeader/TabHeader";
 import { useStyles } from "./components/style";
 
 interface Props {}
