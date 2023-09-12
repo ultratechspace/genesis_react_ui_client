@@ -53,9 +53,9 @@ export const enrollmentSlice = createSlice({
     builder.addCase(getGroups.rejected, (state) => {
       state.loader = false;
     });
-    builder.addCase(getGroups.fulfilled, (state: any, { payload }) => {
+    builder.addCase(getGroups.fulfilled, (state: any, { payload }: any) => {
       state.loader = false;
-      state.groups = payload;
+      state.groups = payload?.items;
     });
     // Get getDriversById methods
     builder.addCase(getDriversById.pending, (state) => {

@@ -36,6 +36,7 @@ type Props = {
 };
 
 export function EnrollmentGroups({ driverhandler }: Props) {
+  console.log(groupList)
   const groupRec: any = useAppSelector(groupList);
   const driverRec = useAppSelector(driverList);
   const [sortByAnchorEl, setSortByAnchorEl] = React.useState<null | HTMLElement>(null);
