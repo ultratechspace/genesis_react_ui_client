@@ -12,13 +12,13 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useFormik } from "formik";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
 import Grid from "@mui/material/Grid";
 import { Button, ListItem } from "@mui/material";
 import { useAppSelector } from "../../../../app-redux/hooks";
-import { driverList, groupList } from "../../../../app-redux/enrollment/enrollmentSlice";
+import {
+  driverList,
+  groupList,
+} from "../../../../app-redux/enrollment/enrollmentSlice";
 import { useDispatch } from "react-redux";
 import { getDriversById } from "../../../../app-redux/enrollment/actions/enrollmentAction";
 
@@ -36,13 +36,16 @@ type Props = {
 };
 
 export function EnrollmentGroups({ driverhandler }: Props) {
-  console.log(groupList)
+  console.log(groupList);
   const groupRec: any = useAppSelector(groupList);
   const driverRec = useAppSelector(driverList);
-  const [sortByAnchorEl, setSortByAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [sortByAnchorEl, setSortByAnchorEl] =
+    React.useState<null | HTMLElement>(null);
   const sortByList = ["Name", "Created Date"];
   const [isSortByOpen, setIsSortByOpen] = React.useState(false);
-  const [openStates, setOpenStates] = React.useState<Record<number, boolean>>({});
+  const [openStates, setOpenStates] = React.useState<Record<number, boolean>>(
+    {}
+  );
   const dispatch = useDispatch();
   const [listGroup, setListGroup] = useState([]);
 
@@ -139,17 +142,29 @@ export function EnrollmentGroups({ driverhandler }: Props) {
 
   return (
     <Box mt={3} ml={2}>
-      <Grid container direction="row" justifyContent="space-between" alignItems="flex-start">
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-between"
+        alignItems="flex-start"
+      >
         <Grid item xs={5}>
           <Typography style={style.groupTitle}>Groups</Typography>
         </Grid>
         <Grid item xs={4}>
           <Box>
-            <Box display="flex" onClick={handleSortByClick} style={{ cursor: "pointer" }}>
+            <Box
+              display="flex"
+              onClick={handleSortByClick}
+              style={{ cursor: "pointer" }}
+            >
               <Typography aria-controls="dropdown-menu" aria-haspopup="true">
                 Sort By
               </Typography>
-              <span> {isSortByOpen ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}</span>
+              <span>
+                {" "}
+                {isSortByOpen ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
+              </span>
             </Box>
 
             <Menu
@@ -176,11 +191,18 @@ export function EnrollmentGroups({ driverhandler }: Props) {
               {value?.driversCount > 1 && (
                 <List
                   key={index}
-                  sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+                  sx={{
+                    width: "100%",
+                    maxWidth: 360,
+                    bgcolor: "background.paper",
+                  }}
                   component="nav"
                   aria-labelledby="nested-list-subheader"
                 >
-                  <Box display="flex" onClick={() => getDrivers(value.id, index)}>
+                  <Box
+                    display="flex"
+                    onClick={() => getDrivers(value.id, index)}
+                  >
                     <Button
                       disabled={!value.driverList}
                       onClick={() => handleCheckAll(value?.driverList, index)}
@@ -195,36 +217,55 @@ export function EnrollmentGroups({ driverhandler }: Props) {
                     </Button>
                     <ListItemButton onClick={handleToggle(index)}>
                       <ListItemText primary={value.name} />
-                      {openStates[index] ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
+                      {openStates[index] ? (
+                        <ArrowDropDownIcon />
+                      ) : (
+                        <ArrowDropUpIcon />
+                      )}
                     </ListItemButton>
                   </Box>
                   <Collapse in={openStates[index]} timeout="auto" unmountOnExit>
-                    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+                    <List
+                      sx={{
+                        width: "100%",
+                        maxWidth: 360,
+                        bgcolor: "background.paper",
+                      }}
+                    >
                       {driverRec &&
-                        value?.driverList?.map((innerValue: any, innerIndex: any) => {
-                          const labelId = `checkbox-list-label-${innerIndex}`;
+                        value?.driverList?.map(
+                          (innerValue: any, innerIndex: any) => {
+                            const labelId = `checkbox-list-label-${innerIndex}`;
 
-                          return (
-                            <ListItem key={innerIndex} disablePadding>
-                              <ListItemButton
-                                role={undefined}
-                                onClick={handleChecked(innerValue.id)}
-                                dense
-                              >
-                                <ListItemIcon>
-                                  <Checkbox
-                                    edge="start"
-                                    checked={checked.indexOf(innerValue.id) !== -1}
-                                    tabIndex={-1}
-                                    disableRipple
-                                    inputProps={{ "aria-labelledby": labelId }}
+                            return (
+                              <ListItem key={innerIndex} disablePadding>
+                                <ListItemButton
+                                  role={undefined}
+                                  onClick={handleChecked(innerValue.id)}
+                                  dense
+                                >
+                                  <ListItemIcon>
+                                    <Checkbox
+                                      edge="start"
+                                      checked={
+                                        checked.indexOf(innerValue.id) !== -1
+                                      }
+                                      tabIndex={-1}
+                                      disableRipple
+                                      inputProps={{
+                                        "aria-labelledby": labelId,
+                                      }}
+                                    />
+                                  </ListItemIcon>
+                                  <ListItemText
+                                    id={labelId}
+                                    primary={innerValue.name}
                                   />
-                                </ListItemIcon>
-                                <ListItemText id={labelId} primary={innerValue.name} />
-                              </ListItemButton>
-                            </ListItem>
-                          );
-                        })}
+                                </ListItemButton>
+                              </ListItem>
+                            );
+                          }
+                        )}
                     </List>
                   </Collapse>
                 </List>

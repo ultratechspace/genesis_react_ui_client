@@ -1,6 +1,13 @@
-import { Box, Button, Grid, IconButton, InputAdornment, Menu, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  IconButton,
+  InputAdornment,
+  Menu,
+  Typography,
+} from "@mui/material";
 import { useFormik } from "formik";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Search from "@material-ui/icons/Search";
 import { useStyles } from "./style";
@@ -21,8 +28,11 @@ type Props = {
   behaviourHandler: any;
 };
 
-export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandler }: Props) {
-  const classes = useStyles();
+export function EnrollmentFilters({
+  statusHandler,
+  courceHandler,
+  behaviourHandler,
+}: Props) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [anchorE2, setAnchorE2] = useState<null | HTMLElement>(null);
   const [anchorE3, setAnchorE3] = useState<null | HTMLElement>(null);
@@ -31,7 +41,11 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
   const [isStatusOpen, setIsStatusOpen] = useState(false);
   const statusList = ["backlog", "completed"];
   const courseList = useAppSelector(coursesRec);
-  const behaviourList = ["Back Up When Leaving", "Hard Acceleration", "Harsh Braking"];
+  const behaviourList = [
+    "Back Up When Leaving",
+    "Hard Acceleration",
+    "Harsh Braking",
+  ];
   const formik = useFormik({
     initialValues: {
       search: "",
@@ -115,7 +129,12 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
   };
 
   return (
-    <Grid container direction="row" justifyContent="space-between" alignItems="flex-start">
+    <Grid
+      container
+      direction="row"
+      justifyContent="space-between"
+      alignItems="flex-start"
+    >
       <Grid item xs={4}>
         <TextField
           className={"customTextField"}
@@ -143,11 +162,18 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
       </Grid>
       <Grid item xs={4} justifyContent="center" display="flex">
         <Box>
-          <Box display="flex" onClick={handleBehaviourClick} style={{ cursor: "pointer" }}>
+          <Box
+            display="flex"
+            onClick={handleBehaviourClick}
+            style={{ cursor: "pointer" }}
+          >
             <Typography aria-controls="dropdown-menu" aria-haspopup="true">
               Behaviours
             </Typography>
-            <span> {isBehavoiurOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}</span>
+            <span>
+              {" "}
+              {isBehavoiurOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+            </span>
           </Box>
 
           <Menu
@@ -158,8 +184,13 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
             style={{ height: "50%" }}
           >
             {behaviourList.map((option) => (
-              <MenuItem key={option} onClick={handleBehaviourOptionToggle(option)}>
-                <Checkbox checked={formik.values.behaviour.indexOf(option) > -1} />
+              <MenuItem
+                key={option}
+                onClick={handleBehaviourOptionToggle(option)}
+              >
+                <Checkbox
+                  checked={formik.values.behaviour.indexOf(option) > -1}
+                />
                 <ListItemText primary={option} />
               </MenuItem>
             ))}
@@ -167,11 +198,18 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
         </Box>
 
         <Box style={{ marginLeft: "15px", marginRight: "15px" }}>
-          <Box display="flex" onClick={handleCoursesClick} style={{ cursor: "pointer" }}>
+          <Box
+            display="flex"
+            onClick={handleCoursesClick}
+            style={{ cursor: "pointer" }}
+          >
             <Typography aria-controls="dropdown-menu" aria-haspopup="true">
               Courses
             </Typography>
-            <span> {isCoursesOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}</span>
+            <span>
+              {" "}
+              {isCoursesOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+            </span>
           </Box>
 
           <Menu
@@ -182,8 +220,13 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
             style={{ height: "50%" }}
           >
             {courseList.map((option: any) => (
-              <MenuItem key={option.id} onClick={handleCoursesOptionToggle(option.id)}>
-                <Checkbox checked={formik.values.courses.indexOf(option.id) > -1} />
+              <MenuItem
+                key={option.id}
+                onClick={handleCoursesOptionToggle(option.id)}
+              >
+                <Checkbox
+                  checked={formik.values.courses.indexOf(option.id) > -1}
+                />
                 <ListItemText primary={option.name} />
               </MenuItem>
             ))}
@@ -191,11 +234,18 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
         </Box>
 
         <Box>
-          <Box display="flex" onClick={handleStatusClick} style={{ cursor: "pointer" }}>
+          <Box
+            display="flex"
+            onClick={handleStatusClick}
+            style={{ cursor: "pointer" }}
+          >
             <Typography aria-controls="dropdown-menu" aria-haspopup="true">
               Status
             </Typography>
-            <span> {isStatusOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}</span>
+            <span>
+              {" "}
+              {isStatusOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+            </span>
           </Box>
 
           <Menu
@@ -240,7 +290,12 @@ export function EnrollmentFilters({ statusHandler, courceHandler, behaviourHandl
         <Box
           display="flex"
           onClick={() => handleClear()}
-          style={{ cursor: "pointer", color: "#2a3d75", marginLeft: "15px", marginRight: "15px" }}
+          style={{
+            cursor: "pointer",
+            color: "#2a3d75",
+            marginLeft: "15px",
+            marginRight: "15px",
+          }}
         >
           <span>
             <SendIcon />

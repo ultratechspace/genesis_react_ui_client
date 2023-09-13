@@ -8,5 +8,7 @@ export const EnrollmentRoute: IRoute = {
   path: "/enrollment",
   component: Main,
   guard: true,
-  subRoutes: [{ icon: InfoIcon, component: Enrollment, path: "", title: "Enrollment" }],
+  subRoutes: [
+    { icon: InfoIcon, component: Enrollment, path: "", title: "Enrollment" },
+  ],
 };
